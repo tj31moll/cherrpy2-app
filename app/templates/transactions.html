@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Transactions{% endblock %}
+
+{% block content %}
+  <h1>Transactions</h1>
+  <form method="post" action="/add_transaction">
+    <label for="kid_id">Kid:</label>
+    <select name="kid_id">
+      {% for kid in kids %}
+        <option value="{{ kid.id }}">{{ kid.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="amount">Amount:</label>
+    <input type="number" step="0.01" name="amount" required>
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" name="description">
+    <br>
+    <input type="submit" value="Add">
+  </form>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Kid</th>
+        <th>Amount</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for transaction in transactions %}
+        <tr>
+          <td>{{ transaction.date.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+          <td>{{ transaction.kid.name }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.description }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Add Transaction{% endblock %}
+
+{% block content %}
+  <h1>Add Transaction</h1>
+  <form method="post" action="/add_transaction">
+    <label for="kid">Kid:</label>
+    <select name="kid_id">
+      {% for kid in kids %}
+      <option value="{{ kid.id }}">{{ kid.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" name="description" required>
+    <br>
+    <label for="amount">Amount:</label>
+    <input type="number" step="0.01" name="amount" required>
+    <br>
+    <input type="submit" value="Add">
+  </form>
+{% endblock %}

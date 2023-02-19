@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Add Kid{% endblock %}
+
+{% block content %}
+  <h1>Add Kid</h1>
+  <form method="post" action="/add_kid">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+    <br>
+    <label for="balance">Balance:</label>
+    <input type="number" step="0.01" name="balance" required>
+    <br>
+    <input type="submit" value="Add">
+  </form>
+{% endblock %}

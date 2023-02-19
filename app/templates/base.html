@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add_kid">Add Kid</a></li>
+        <li><a href="/add_transaction">Add Transaction</a></li>
+      </ul>
+    </nav>
+    {% block content %}{% endblock %}
+  </body>
+</html>

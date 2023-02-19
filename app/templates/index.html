@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Kid Balances{% endblock %}
+
+{% block content %}
+  <h1>Kid Balances</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for kid in kids %}
+        <tr>
+          <td>{{ kid.name }}</td>
+          <td>{{ kid.balance }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
