@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ kid.name }}'s Allowance Tracker</title>
+</head>
+<body>
+    <h1>{{ kid.name }}'s Allowance Tracker</h1>
+    <p>Balance: {{ kid.balance }}</p>
+    <h2>Add an activity</h2>
+    <form method="post" action="/kid/{{ kid.id }}/add_activity">
+        <label for="activity_name">Activity name:</label>
+        <input type="text" id="activity_name" name="activity_name"><br>
+        <label for="activity_cost">Activity cost:</label>
+        <input type="number" id="activity_cost" name="activity_cost"><br>
+        <input type="submit" value="Add activity">
+    </form>
+    <h2>Add a custom amount</h2>
+    <form method="post" action="/kid/{{ kid.id }}/add_custom_amount">
+        <label for="custom_amount">Custom amount:</label>
+        <input type="number" id="custom_amount" name="custom_amount"><br>
+        <input type="submit" value="Add custom amount">
+    </form>
+    <h2>Activities</h2>
+    <table>
+        <tr>
+            <th>Activity name</th>
+            <th>Activity cost</th>
+        </tr>
+        {% for activity in kid.activities %}
+        <tr>
+            <td>{{ activity.name }}</td>
+            <td>{{ activity.cost }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

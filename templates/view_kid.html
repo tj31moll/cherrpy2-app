@@ -1,0 +1,17 @@
+# templates/view_kid.html
+
+{% extends "base.html" %}
+
+{% block title %}View Kid{% endblock %}
+
+{% block content %}
+  <h1>{{ kid.name }}</h1>
+  <p>Current Balance: {{ kid.balance }}</p>
+  <ul>
+    {% for activity in kid.activities %}
+      <li>{{ activity.name }}: {{ activity.cost }}</li>
+    {% endfor %}
+  </ul>
+  <a href="/add_activity/{{ kid.id }}">Add Activity</a>
+{% endblock %}
+

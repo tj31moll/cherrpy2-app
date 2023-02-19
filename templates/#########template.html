@@ -1,0 +1,96 @@
+# templates/base.html
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+</html>
+css
+Copy code
+# templates/home.html
+
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <h1>Welcome to Allowance Tracker!</h1>
+  <p>Please select an option from the menu above.</p>
+{% endblock %}
+php
+Copy code
+# templates/add_child.html
+
+{% extends "base.html" %}
+
+{% block title %}Add Child{% endblock %}
+
+{% block content %}
+  <h1>Add a Child</h1>
+  <form method="POST" action="/add_child">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+    <label for="balance">Starting Balance:</label>
+    <input type="number" id="balance" name="balance" min="0"><br>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
+css
+Copy code
+# templates/view_child.html
+
+{% extends "base.html" %}
+
+{% block title %}View Child{% endblock %}
+
+{% block content %}
+  <h1>{{ child.name }}</h1>
+  <p>Current Balance: {{ child.balance }}</p>
+  <ul>
+    {% for activity in child.activities %}
+      <li>{{ activity.name }}: {{ activity.cost }}</li>
+    {% endfor %}
+  </ul>
+  <a href="/add_activity/{{ child.id }}">Add Activity</a>
+{% endblock %}
+php
+Copy code
+# templates/add_activity.html
+
+{% extends "base.html" %}
+
+{% block title %}Add Activity{% endblock %}
+
+{% block content %}
+  <h1>Add an Activity for {{ child.name }}</h1>
+  <form method="POST" action="/add_activity/{{ child.id }}">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br>
+    <label for="cost">Cost:</label>
+    <input type="number" id="cost" name="cost" min="0"><br>
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
+css
+Copy code
+# templates/view_activity.html
+
+{% extends "base.html" %}
+
+{% block title %}View Activity{% endblock %}
+
+{% block content %}
+  <h1>{{ activity.name }}</h1>
+  <p>Cost: {{ activity.cost }}</p>
+  <p>Belongs to: {{ activity.child.name }}</p>
+{% endblock %}
+Keep in mind that these are very basic templates and should be modified to suit your specific needs.
+
+
+
+
+Regenerate response

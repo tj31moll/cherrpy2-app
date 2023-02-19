@@ -1,0 +1,11 @@
+# templates/view_activity.html
+
+{% extends "base.html" %}
+
+{% block title %}View Activity{% endblock %}
+
+{% block content %}
+  <h1>{{ activity.name }}</h1>
+  <p>Cost: {{ activity.cost }}</p>
+  <p>Belongs to: {{ activity.kid.name }}</p>
+{% endblock %}

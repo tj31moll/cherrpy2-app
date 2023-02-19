@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Add Activity{% endblock %}
+
+{% block content %}
+  <h1>Add Activity</h1>
+  <form method="post" action="/add_activity">
+    <input type="hidden" name="kid_id" value="{{ kid_id }}">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+    <br>
+    <label for="cost">Cost:</label>
+    <input type="number" step="0.01" name="cost" required>
+    <br>
+    <input type="submit" value="Add">
+  </form>
+{% endblock %}

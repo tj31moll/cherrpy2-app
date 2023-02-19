@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}All Kids{% endblock %}
+
+{% block content %}
+  <h1>All Kids</h1>
+  <ul>
+    {% for kid in kids %}
+            <li><a href="/view_activity?id={{ kid.id }}">{{ kid.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

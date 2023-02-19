@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Allowance Tracker</title>
+</head>
+<body>
+    <h1>Welcome to Allowance Tracker</h1>
+    <p>Please choose a kid:</p>
+    <ul>
+        {% for kid in kids %}
+        <li><a href="/kid/{{ kid.id }}">{{ kid.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
