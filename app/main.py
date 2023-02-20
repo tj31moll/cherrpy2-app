@@ -1,15 +1,10 @@
+import os
+import json
 from kivy.app import App
 from kivy.network.urlrequest import UrlRequest
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
-
 from jinja2 import Environment, FileSystemLoader
-from cheroot.wsgi import Server as WSGIServer
-
-import os
-import json
-
-from server import KidApp
 
 env = Environment(loader=FileSystemLoader(os.path.abspath('templates')))
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -43,8 +38,10 @@ class TransactionForm(BoxLayout):
 
 class KidTrackerApp(App):
     def build(self):
-        return TransactionForm()
+        layout = BoxLayout(orientation='vertical')
+        form = TransactionForm()
+        layout.add_widget(form)
+        return layout
 
 if __name__ == '__main__':
-    server = WSGIServer(('0.0.0.0', 8080), KidApp())
-    server.start()
+    KidTrackerApp().run()
