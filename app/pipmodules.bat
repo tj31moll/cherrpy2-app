@@ -1,0 +1,1 @@
+pip3 install cherrypy kivy jinja2 peewee

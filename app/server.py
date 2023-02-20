@@ -4,6 +4,8 @@ from jinja2 import Environment, FileSystemLoader
 from models import db, Kid, Transaction
 
 env = Environment(loader=FileSystemLoader(os.path.abspath('templates')))
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(ROOT_DIR, 'static')
 
 class KidApp:
 
@@ -57,7 +59,13 @@ if __name__ == '__main__':
     db.close()
     db.connect()
     db.create_tables([Kid, Transaction])
-    cherrypy.tree.mount(KidApp(), '/')
+    conf = {
+        '/static': {
+            'tools.staticdir.on': True,
+            'tools.staticdir.dir': STATIC_DIR,
+        },
+    }
+    cherrypy.tree.mount(KidApp(), '/', config=conf)
     cherrypy.server.socket_host = '0.0.0.0'
     cherrypy.engine.start()
     cherrypy.engine.block()
