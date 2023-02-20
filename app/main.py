@@ -5,7 +5,6 @@ from kivy.properties import ObjectProperty
 
 from jinja2 import Environment, FileSystemLoader
 from cheroot.wsgi import Server as WSGIServer
-from cheroot.wsgi import Server as WSGIServer
 
 import os
 import json
